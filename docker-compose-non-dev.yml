@@ -74,6 +74,7 @@ services:
       - 8088:8088
     depends_on: *superset-depends-on
     volumes: *superset-volumes
+    platform: linux/amd64/v8
 
   superset-init:
     image: tongthanhkt/superset-init:v1
@@ -89,6 +90,7 @@ services:
     depends_on: *superset-depends-on
     user: "root"
     volumes: *superset-volumes
+    platform: linux/amd64/v8
     healthcheck:
       disable: true
 
@@ -107,6 +109,7 @@ services:
     depends_on: *superset-depends-on
     user: "root"
     volumes: *superset-volumes
+    platform: linux/amd64/v8
     healthcheck:
       test:
         [
@@ -129,6 +132,7 @@ services:
     depends_on: *superset-depends-on
     user: "root"
     volumes: *superset-volumes
+    platform: linux/amd64/v8
     healthcheck:
       disable: true
 
