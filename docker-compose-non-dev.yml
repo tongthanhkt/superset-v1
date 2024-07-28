@@ -63,9 +63,9 @@ services:
         required: true
       - path: docker/.env-local # optional override
         required: false
-    # build:
-    #   <<: *common-build
-    image: tongthanhkt/superset-app:v1
+    build:
+      # <<: *common-build
+     image: tongthanhwork/superset-app:v1
     container_name: superset_app
     command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
     user: "root"
@@ -76,11 +76,11 @@ services:
     volumes: *superset-volumes
 
   superset-init:
-    image: tongthanhkt/superset-init:v1
+    image: tongthanhwork/superset-init:v1
     container_name: superset_init
     # build:
     #   <<: *common-build
-    # command: ["/app/docker/docker-init.sh"]
+    command: ["/app/docker/docker-init.sh"]
     env_file:
       - path: docker/.env # default
         required: true
@@ -95,7 +95,7 @@ services:
   superset-worker:
     # build:
     #   <<: *common-build
-    image: tongthanhkt/superset-worker:v1
+    image: tongthanhwork/superset-worker:v1
     container_name: superset_worker
     command: ["/app/docker/docker-bootstrap.sh", "worker"]
     env_file:
@@ -117,7 +117,7 @@ services:
   superset-worker-beat:
     # build:
     #   <<: *common-build
-    image: tongthanhkt/superset-worker-beat:v1
+    image: tongthanhwork/superset-worker-beat:v1
     container_name: superset_worker_beat
     command: ["/app/docker/docker-bootstrap.sh", "beat"]
     env_file:
